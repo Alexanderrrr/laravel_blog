@@ -18,7 +18,7 @@ class PostsController extends Controller
 
     public function show($id)
     {
-       $post = Post::findOrFail($id);
+       $post = Post::with('comments')->find($id); //da ne bude lazy loading
 
        return view('posts.show', ['post' => $post]);
 
