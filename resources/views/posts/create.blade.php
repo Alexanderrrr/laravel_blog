@@ -14,10 +14,12 @@
   <div class="form-group">
     <label>Title</label>
     <input name="title" type="text" class="form-control" placeholder="Enter title">
+    @include('posts.partials.error_message', ['field' => 'title']) <!-- gadjamo name od inputa -->
   </div>
   <div class="form-group">
     <label>Body</label>
     <textarea name="body"class="form-control" placeholder="Enter body" rows="10" cols="80"></textarea>
+    @include('posts.partials.error_message', ['field' => 'body'])
   </div>
   <div class="form-group form-check">
     <input checked="true" value="1" name="published" type="checkbox" class="form-check-input">
