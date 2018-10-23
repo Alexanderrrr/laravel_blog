@@ -14,8 +14,17 @@
           <ul class="list-unstyled">
             @foreach($post->comments as $comment)
 
-              <li><p><b>Author:</b> {{ $comment->author }}</p></li>
-              <p>{{ $comment->text }}</p>
+              <li>
+                <p><b>Author:</b> {{ $comment->author }}</p>
+                <p>{{ $comment->text }}</p>
+                <form class="" action="/posts/{{ $post->id }}/comments/{{ $comment->id }}" method="POST">
+
+                  {{ csrf_field() }}
+                  
+                  <button class="btn btn-danger" type="submit" name="button">delete</button>
+                </form>
+
+              </li>
 
             @endforeach
           </ul>
