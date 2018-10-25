@@ -13,21 +13,21 @@
 Route::get('/','PostsController@index');
 Route::get('/logout', 'LoginController@logout');
 
-Route::prefix('login')->group(function () {
-    Route::get('/', 'LoginController@index');
+Route::group(['prefix' => 'login'],function () {
+    Route::get('/', 'LoginController@index')->name('login');
     Route::post('/', 'LoginController@login');
 
 });
 
 
-Route::prefix('register')->group(function () {
+Route::group(['prefix' => 'register'],function () {
 
-Route::get('/','RegisterController@create');
-Route::post('/','RegisterController@store');
+    Route::get('/','RegisterController@create');
+    Route::post('/','RegisterController@store');
 
 });
 
-Route::prefix('posts')->group(function () {
+Route::group(['prefix' => 'posts', 'middleware' => ['auth']],function () {
 
     Route::get('/create', 'PostsController@create');
 
