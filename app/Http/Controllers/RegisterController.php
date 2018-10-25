@@ -23,7 +23,7 @@ class RegisterController extends Controller
       $user = new User();
       $user->name = request('name');
       $user->email = request('email');
-      $user->password = bcrypt(request('password'));
+      $user->password = bcrypt(request('password')); //hesiranje sifre sa bcrypt
       $user->save();
       //$user = User::create(request()->all());
       auth()->login($user);
