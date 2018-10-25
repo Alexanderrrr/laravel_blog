@@ -10,7 +10,6 @@ class PostsController extends Controller
     public function index()
     {
 
-        dd(auth()->user());
         $posts = Post::getPublishedPosts();
 
         return view('posts.index', ['posts' => $posts]);

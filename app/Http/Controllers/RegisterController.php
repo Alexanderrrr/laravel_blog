@@ -20,7 +20,12 @@ class RegisterController extends Controller
        User::VALIDATION_RULES
         );
 
-      $user = User::create(request()->all());
+      $user = new User();
+      $user->name = request('name');
+      $user->email = request('email');
+      $user->password = bcrypt(request('password'));
+      $user->save();
+      //$user = User::create(request()->all());
       auth()->login($user);
 
       return redirect('/posts');
