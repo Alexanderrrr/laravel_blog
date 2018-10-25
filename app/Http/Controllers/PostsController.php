@@ -10,6 +10,7 @@ class PostsController extends Controller
     public function index()
     {
 
+        dd(auth()->user());
         $posts = Post::getPublishedPosts();
 
         return view('posts.index', ['posts' => $posts]);
@@ -40,5 +41,14 @@ class PostsController extends Controller
          Post::create(request()->all());
          return redirect('/');
 
+    }
+
+
+    public function destroy($postId)
+    {
+      $deletePost = Post::findOrFail($postId);
+      $deletePost->delete();
+
+      return redirect("/posts");
     }
 }

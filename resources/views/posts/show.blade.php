@@ -8,6 +8,13 @@
     <div class="blog-post">
       <h2 class="blog-post-title">{{ $post->title }}</h2>
       <p>{{ $post->body }}</p>
+      <form action="/posts/{{ $post->id }}/delete/{{ $post->id }}" method="POST">
+
+        {{ csrf_field() }}
+
+        <button class="btn btn-danger" type="submit" name="button">Delete post</button>
+      </form>
+      <hr/>
 
         @if(count($post->comments))
           <h4>Comments</h4>
@@ -17,11 +24,11 @@
               <li>
                 <p><b>Author:</b> {{ $comment->author }}</p>
                 <p>{{ $comment->text }}</p>
-                <form class="" action="/posts/{{ $post->id }}/comments/{{ $comment->id }}" method="POST">
+                <form action="/posts/{{ $post->id }}/comments/{{ $comment->id }}" method="POST">
 
                   {{ csrf_field() }}
-                  
-                  <button class="btn btn-danger" type="submit" name="button">delete</button>
+
+                  <button class="btn btn-danger" type="submit" name="button">delete comment</button>
                 </form>
 
               </li>

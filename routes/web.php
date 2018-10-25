@@ -10,6 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/','PostsController@index');
+
+Route::prefix('register')->group(function () {
+
+Route::get('/','RegisterController@create');
+Route::post('/','RegisterController@store');
+
+});
 
 Route::prefix('posts')->group(function () {
 
@@ -19,15 +27,12 @@ Route::prefix('posts')->group(function () {
 
     Route::get('/{id}', 'PostsController@show');
     Route::get('/', 'PostsController@index');
+    Route::post('/{id}/delete/{postId}', 'PostsController@destroy');
+
 
     Route::prefix('/{postId}/comments')->group(function () {
-      Route::post('/', 'CommentsController@store');
-      Route::post('/{commentId}', 'CommentsController@destroy');
+        Route::post('/', 'CommentsController@store');
+        Route::post('/{commentId}', 'CommentsController@destroy');
     });
 
-
-
-
 });
-
-Route::get('/','PostsController@index');

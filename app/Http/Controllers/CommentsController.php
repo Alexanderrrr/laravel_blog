@@ -30,8 +30,7 @@ class CommentsController extends Controller
         $comment->delete();
 
         return redirect("/posts/{$postId}");
-        
-        dd($postId, $commentId);
+
     }
 
 }
