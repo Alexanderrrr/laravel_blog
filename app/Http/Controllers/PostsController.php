@@ -37,7 +37,15 @@ class PostsController extends Controller
           Post::VALIDATION_RULES
            );
 
-         Post::create(request()->all());
+         Post::create(
+           array_merge(
+             request()->all(),
+             [
+               'author_id' =>auth()->user()->id
+
+             ]
+            )
+          );
          return redirect('/');
 
     }
