@@ -25,6 +25,10 @@
     <input name="password" type="password" class="form-control" placeholder="Enter password">
     @include('posts.partials.error_message', ['field' => 'password']) <!-- gadjamo name od inputa -->
   </div>
+  <div class="form-group">
+    <label>Age</label>
+    <input name="age" id="age" type="text" class="form-control" placeholder="age">
+  </div>
 
 
   <button type="submit" class="btn btn-primary">Submit</button>

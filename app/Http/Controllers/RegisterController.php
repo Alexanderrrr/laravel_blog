@@ -11,6 +11,8 @@ class RegisterController extends Controller
     public function __construct()
     {
       $this->middleware('guest');
+      $this->middleware('age')->except('create');
+
     }
     public function create()
     {
@@ -32,7 +34,7 @@ class RegisterController extends Controller
       $user->save();
       //$user = User::create(request()->all());
       auth()->login($user);
-
+      session()->flash('message', 'Hvala sto ste se registrovali');
       return redirect('/posts');
     }
 }
