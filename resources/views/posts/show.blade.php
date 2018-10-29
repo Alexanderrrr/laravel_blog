@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+<h6>Created by {{$post->author->name}}</h6>
+
     <div class="blog-post">
       <h2 class="blog-post-title">{{ $post->title }}</h2>
       <p>{{ $post->body }}</p>

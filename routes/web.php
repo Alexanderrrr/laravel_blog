@@ -44,3 +44,5 @@ Route::group(['prefix' => 'posts', 'middleware' => ['auth']],function () {
     });
 
 });
+
+Route::get('/users/{id}', 'UsersController@show');

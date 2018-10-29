@@ -7,8 +7,8 @@
 @section('content')
     <h1>Posts</h1>
     <ul>
-      @foreach($posts as $post)
-      <h6>Created by <a href="/users/{{$post->author->id}}">{{$post->author->name}}</a></h6>
+      @foreach($author->posts as $post)
+      <h6>Created by {{$post->author->name}}</h6>
 
           <div class="blog-post">
             <h2 class="blog-post-title"><a href="/posts/{{$post->id}}">{{ $post->title }}</a></h2>
