@@ -25,6 +25,16 @@
     <input checked="true" value="1" name="published" type="checkbox" class="form-check-input">
     <label class="form-check-label">Publish this post?</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <div class="form-group">
+      <label>Select tags</label><br/>
+
+      @foreach($tags as $tag)
+      {{ $tag->name }} <input type="checkbox" name="tags[]" value="{{  $tag->id  }}"><br/>
+      @endforeach
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>
 @endsection

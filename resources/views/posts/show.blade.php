@@ -9,6 +9,17 @@
 
     <div class="blog-post">
       <h2 class="blog-post-title">{{ $post->title }}</h2>
+
+      <p>
+          <ul>
+              @foreach($post->tags as $tag)
+                  <li>
+                      <a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a>
+                  </li>
+              @endforeach
+          </ul>
+      </p>
+
       <p>{{ $post->body }}</p>
       <form action="/posts/{{ $post->id }}/delete/{{ $post->id }}" method="POST">
 

@@ -46,3 +46,5 @@ Route::group(['prefix' => 'posts', 'middleware' => ['auth']],function () {
 });
 
 Route::get('/users/{id}', 'UsersController@show');
+
+Route::get('/posts/tags/{tag}', 'TagsController@index');

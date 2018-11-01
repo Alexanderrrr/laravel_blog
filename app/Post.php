@@ -18,13 +18,15 @@ class Post extends Model
 
         'title' => 'required',
         'body' => 'required | min:25',
-        'published' => 'required'
+        'published' => 'required',
+        'tags' => 'required|array',
+
 
     ];
 
     public static function getPublishedPosts()
     {
-      return Post::where('published', true)->get();
+      return Post::where('published', true);
     }
 
     public function author()
@@ -35,5 +37,10 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function tags()
+    {
+      return $this->belongsToMany(Tag::class);
     }
 }
